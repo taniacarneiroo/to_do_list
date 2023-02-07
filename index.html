@@ -27,8 +27,8 @@
         <h2>Tarefas</h2>
 
         <div> <!--Uma caixa, sem saber o conteúdo-->
-            <input type="text" id="tarefa" placeholder="Insira sua tarefa">
-            <button onclick="adicionarTarefas()">Enviar Tarefa</button> <!--Chamar a função que está no script.js-->
+            <input onkeypress="adicionarTarefas(event)" type="text" id="tarefa" placeholder="Insira sua tarefa">
+            <button onclick="adicionarTarefas(event)" >Enviar Tarefa</button> <!--Chamar a função que está no script.js-->
         </div>
         <div id="alertas"></div>
 
