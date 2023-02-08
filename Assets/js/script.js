@@ -14,8 +14,6 @@ function adicionarTarefas(event){
 
 if (event.key == 'Enter' || event.type == 'click')
 
-
-
 {
     
 
@@ -41,12 +39,12 @@ function exibeTarefas(){
         cardTarefas.innerHTML +=
        `<span>
             <p> ${task.titulo}</p>
-            <p onclick='alteraStatus()'>${task.status}</p>
+            <p onclick='alteraStatus(event)'>${task.status}</p>
             <button onclick='editarTarefas()'>Editar</button>
-            <button onclick='excluiTarefas()'>Excluir</button>
+            <button onclick='excluiTarefas(event)'>Excluir</button>
         </span>`;
     }}
-
+/*event captura o evendo (click)*/
 function excluiTarefas(event){
     let elementoPai = event.target.parentNode;
 
@@ -66,11 +64,36 @@ for (let [index,tarefa] of tarefas.entries()){
 
 elementoPai.remove();
 
+}
+/*innerText, insire um texto
+innerHTML, insere um códigoHTML*/
 
+function alteraStatus(event){
+    
+ 
+    let status = event.target.innerText;
+
+    let elementoPai = event.target.parentNode;
+    let tituloTarefa = elementoPai.children[0].innerText;
+
+    switch( status){
+        case 'à executar' : status = "executando"; break;
+        case 'executando' : status = "feito"; break;
+        case 'feito' : alert ( `O status ${status} não poderá ser alterado`); break;
+        default : alert ( `O status ${status} não poderá ser alterado`); 
+    }
+
+    for (let valor of tarefas)
+    {
+        if (tituloTarefa == valor.titulo){
+        valor.status = status;
+        event.target.innertText = '';
+
+        console.log(event.target.innerText)
+        }
+    
+    }
+    
 
 }
-
-
-
-
 
